@@ -69,3 +69,33 @@ def get_playlist_audio_features(sp, songs):
     # print(df_features)
     df_features.to_csv('audio_features.csv')
     return df_features
+
+
+def get_songs_ids(file_path):
+    cluster = pd.read_csv(file_path).iloc[:, 1:]
+    cluster_id_list = cluster['id'].tolist()
+
+    listoflists = []
+    index = 0
+
+    while len(cluster_id_list) > 0:
+        offset = 100
+        if len(cluster_id_list) > offset:
+            new_list = cluster_id_list[index:index+offset]
+            cluster_id_list = cluster_id_list[index+offset:]
+            listoflists.append(new_list)
+        else:
+            listoflists.append(cluster_id_list)
+            cluster_id_list = []
+    return listoflists
+
+
+def create_playlist(sp, username, name, description, lists):
+    sp.user_playlist_create(user=username, name=name,
+                            public=True, collaborative=False,
+                            description=description)
+    list_of_playlists = sp.user_playlists(user=username)
+    playlist_id = list_of_playlists['items'][0]['id']
+    for songs in lists:
+        sp.user_playlist_add_tracks(user=username, playlist_id=playlist_id, tracks=songs)
+    print(f"Your songs have been added to the playlist {name}!")
