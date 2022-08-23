@@ -310,3 +310,11 @@
 308,0.668,0.441,80.189,0.312,0.437,0.0,4,0.638,4,280947,-6.07,0.411,0,audio_features,spotify:track:5G2kPOVJWA7lggyxoL1xcm
 309,0.745,0.105,88.015,0.163,0.495,0.0102,4,0.83,5,273668,-8.34,0.498,0,audio_features,spotify:track:2nrgOEtV9AZn6oDzbV3uMq
 310,0.726,0.0886,74.969,0.261,0.302,0.0,4,0.777,3,198613,-7.841,0.798,0,audio_features,spotify:track:0yd4OCmrcqvsAMUJGCMEFQ
+311,0.919,0.0716,164.998,0.0368,0.00287,2.53e-06,4,0.482,7,190802,-4.499,0.495,1,audio_features,spotify:track:7mTqeB9n0UciFX0bo3KpvI
+312,0.635,0.0784,172.378,0.223,0.46,6.23e-06,5,0.482,5,195440,-7.735,0.877,0,audio_features,spotify:track:6IfzGXxQHfRbw3GNYa1Whj
+313,0.617,0.0835,168.943,0.0569,0.103,0.0,4,0.625,1,245556,-5.634,0.679,0,audio_features,spotify:track:5ouMZCfMxMNxffPX5BR8K4
+314,0.48,0.0571,169.964,0.336,0.222,0.000763,4,0.735,9,208000,-10.042,0.353,1,audio_features,spotify:track:4qDp2aoJCukWNIeeCInx3X
+315,0.493,0.0927,112.97,0.344,0.492,0.0,4,0.841,3,192040,-9.018,0.682,0,audio_features,spotify:track:0i0ESj6M9eV8ck3LP07QzD
+316,0.667,0.0674,89.029,0.0551,0.169,0.0,4,0.718,9,161882,-5.008,0.48,0,audio_features,spotify:track:1SSzM044DUbVpYNNHWIhYJ
+317,0.702,0.338,199.739,0.275,0.251,0.0,4,0.493,11,138053,-6.457,0.342,0,audio_features,spotify:track:2diEeH1DjfrYGRlXENLkdY
+318,0.627,0.126,156.112,0.174,0.247,0.0,4,0.681,10,188011,-5.799,0.59,0,audio_features,spotify:track:5yUHuvSaB5oCltuM9a00az

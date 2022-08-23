@@ -1,0 +1,1 @@
+Kmeans algorithm is an unsupervised machine learning algorithm that can divide a group of objects into smaller groups based on similarities between them. In this case, each group will display a different set of features. Let's see how their distribution looks like:

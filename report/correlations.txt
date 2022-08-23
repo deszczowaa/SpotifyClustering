@@ -1,0 +1,6 @@
+The following figure represents the correlations between the features displayed by your playlist:
+-   value close to 0 - there is no relationship between the features
+-   value close to 1 - the features coexist together
+-   value close to -1 - one feature has a high value, the other has a low value
+
+
