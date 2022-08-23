@@ -23,7 +23,7 @@ pdf.set_auto_page_break(auto=True, margin=15)
 
 # add title page
 pdf.add_page()
-pdf.image('background-image.png', x=-0.5, y=100, w=pdf.w+1)
+pdf.image('report/background-image.png', x=-0.5, y=100, w=pdf.w+1)
 pdf.set_font('arial', 'I', 14)
 pdf.ln(190)
 pdf.cell(0, 10, "Analysis using Spotify for Developers ", 0, 1, align="C")
@@ -45,23 +45,23 @@ pdf.set_font('arial', '', 10)
 f = open('report/correlations.txt', 'r')
 for x in f:
     pdf.multi_cell(160, 6, txt=x)
-pdf.image('correlation_of_the_features.png', x = None, y = None, w = 160, h = 120, type = '', link = '')
+pdf.image(f'clustered{playlist_name}/images/correlation_of_the_features.png', x = None, y = None, w = 160, h = 120, type = '', link = '')
 pdf.add_page()
 pdf.ln(10)
 f = open('report/features.txt', 'r')
 pdf.set_font('arial', '', 10)
 for x in f:
     pdf.multi_cell(160, 6, txt=x)
-pdf.image('Features-distribution-across-clusters.png', x = None, y = None, w = 160, h = 120, type = '', link = '')
+pdf.image(f'clustered{playlist_name}/images/Features-distribution-across-clusters.png', x = None, y = None, w = 160, h = 120, type = '', link = '')
 
 pdf.ln(10)
 f = open('report/clusters.txt', 'r')
 pdf.set_font('arial', '', 10)
 for x in f:
     pdf.multi_cell(160, 6, txt=x)
-pdf.image('Clusters-visualisation.png', x = None, y = None, w = 160, h = 120, type = '', link = '')
+pdf.image(f'clustered{playlist_name}/images/Clusters-visualisation.png', x = None, y = None, w = 160, h = 120, type = '', link = '')
 for num in range(0, k):
-    pdf.image(f'Cluster{num}songs.png', x = None, y = None, w = 160, h = 120, type = '', link = '')
+    pdf.image(f'clustered{playlist_name}/images/Cluster{num}songs.png', x = None, y = None, w = 160, h = 120, type = '', link = '')
 pdf.ln(10)
 f = open('report/summary.txt', 'r')
 pdf.set_font('arial', 'B', 12)
