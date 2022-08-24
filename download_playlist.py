@@ -22,7 +22,7 @@ class DownloadPlaylist:
                 break
 
         os.mkdir(f'clustered{self.playlist_name}')
-        with open(f'clustered{self.playlist_name}playlist', 'w') as outfile:
+        with open(f'clustered{self.playlist_name}/playlist', 'w') as outfile:
             json.dump(songs, outfile)
 
         info_file = self._get_playlist_songs_info(songs)
