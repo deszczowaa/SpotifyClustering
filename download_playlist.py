@@ -1,5 +1,6 @@
 import pandas as pd
 import json
+import os
 
 
 class DownloadPlaylist:
@@ -20,8 +21,10 @@ class DownloadPlaylist:
             else:
                 break
 
-        with open('playlist', 'w') as outfile:
+        os.mkdir(f'clustered{self.playlist_name}')
+        with open(f'clustered{self.playlist_name}playlist', 'w') as outfile:
             json.dump(songs, outfile)
+
         info_file = self._get_playlist_songs_info(songs)
         features_file = self._get_playlist_audio_features(songs)
         return songs, info_file, features_file
@@ -50,7 +53,7 @@ class DownloadPlaylist:
                                                   'popularity', 'id'])
 
         # print(df_info)
-        df_info.to_csv('songs_info.csv')
+        df_info.to_csv(f'clustered{self.playlist_name}/songs_info.csv')
         info_file = 'songs_info.csv'
         return info_file
 
@@ -81,6 +84,6 @@ class DownloadPlaylist:
                                                                 'valence', 'mode', 'type', 'uri'])
 
         # print(df_features)
-        df_features.to_csv('audio_features.csv')
+        df_features.to_csv(f'clustered{self.playlist_name}/audio_features.csv')
         features_file = 'audio_features.csv'
         return features_file
