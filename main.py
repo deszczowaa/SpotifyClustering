@@ -6,6 +6,7 @@ import os
 from download_playlist import DownloadPlaylist
 from cluster_playlist import ClusterPlaylist
 from create_playlist import CreatePlaylist
+from create_report import PDF
 
 
 # get Spotipy Api Credentials (SPOTIPY_CLIENT_ID and SPOTIPY_CLIENT SECRET and SPOTIPY_REDIRECT_URI)
@@ -33,3 +34,6 @@ if __name__ == "__main__":
     # creates new playlists out of clustered groups
     playlist = CreatePlaylist(sp, username, playlist_name)
     playlist.create_playlist()
+
+    # generates PDF report
+    pdf = PDF(playlist_name)

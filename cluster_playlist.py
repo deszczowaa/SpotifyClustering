@@ -1,5 +1,4 @@
 import os
-
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import MinMaxScaler
@@ -32,6 +31,7 @@ class ClusterPlaylist:
         df1 = df_features.iloc[:, :10]
         # print(df1)
         # print(df1.describe())
+        os.mkdir(f'clustered{self.playlist_name}/images')
         self._correlation(df1)
         score, k, df1_scaled = self._elbow_method(df1)
         features, info = self._kmeans_clustering(df1_scaled, k, df1, df_info)
@@ -39,15 +39,14 @@ class ClusterPlaylist:
         self._clusters_3d(info, features, k)
         self._save_data(info, features, k, self.playlist_name)
 
-    @staticmethod
-    def _correlation(data):
+    def _correlation(self, data):
         # Pearson correlation matrix
         plt.figure(figsize=(10, 8))
         corr = data.corr()
         sns.heatmap(corr, annot=True)
         plt.title('Correlation between features', fontsize=16)
-        plt.savefig('correlation_of_the_features.png')
-        plt.show()
+        plt.savefig(f'clustered{self.playlist_name}/images/correlation_of_the_features.png')
+        # plt.show()
 
     @staticmethod
     def _elbow_method(data):
@@ -65,14 +64,14 @@ class ClusterPlaylist:
         plt.xlabel('k')
         plt.ylabel('Sum_of_squared_distances')
         plt.title('Elbow Method For Optimal k')
-        plt.show()
+        # plt.show()
 
         model = KMeans(random_state=15)
-        visualizer = KElbowVisualizer(model, k=(2, 15), metric='calinski_harabasz', timings=False)
+        visualizer = KElbowVisualizer(model, k=(2, 10), metric='calinski_harabasz', timings=False)
         visualizer.fit(data_scaled)
         score = visualizer.elbow_score_
         value = visualizer.elbow_value_
-        visualizer.show()
+        # visualizer.show()
         return score, value, data_scaled
 
     @staticmethod
@@ -86,15 +85,13 @@ class ClusterPlaylist:
     @staticmethod
     def _save_data(df_info, df_features, k, playlist_name):
         # save clusters to csvs
-        os.mkdir(f'clustered{playlist_name}')
         for num in range(0, k):
             f1 = open('clustered' + playlist_name + '/cluster' + str(num) + ".csv", "w", encoding="utf-8")
             df_info[df_info[f'kmeans-{k}clusters'] == num].to_csv(f1, header=True)
             f2 = open('clustered' + playlist_name + '/features-cluster' + str(num) + ".csv", "w", encoding="utf-8")
             df_features[df_features[f'kmeans-{k}clusters'] == num].to_csv(f2, header=True)
 
-    @staticmethod
-    def _clusters_3d(df_info, df_features, k):
+    def _clusters_3d(self, df_info, df_features, k):
         # plot 3d visualisation of clusters
         fig = px.scatter_3d(df_features, x='acousticness', y='loudness', z='valence',
                             color=df_features[f'kmeans-{k}clusters'],
@@ -108,8 +105,8 @@ class ClusterPlaylist:
                 b=50,
                 t=50,
                 pad=4))
-        fig.show()
-        fig.write_image('Clusters-visualisation.png')
+        # fig.show()
+        fig.write_image(f'clustered{self.playlist_name}/images/Clusters-visualisation.png')
 
         # plot 3d visualisation for each cluster
         for num in range(0, k):
@@ -128,11 +125,10 @@ class ClusterPlaylist:
                     b=50,
                     t=50,
                     pad=4))
-            fig.show()
-            fig.write_image(f'Cluster{num}songs.png')
+            # fig.show()
+            fig.write_image(f'clustered{self.playlist_name}/images/Cluster{num}songs.png')
 
-    @staticmethod
-    def _features_distribution(df_features, k):
+    def _features_distribution(self, df_features, k):
         # only relevant columns from features table
         df = df_features.loc[:, ['energy', 'loudness', 'instrumentalness', "valence",
                                  "acousticness", "danceability", f"kmeans-{k}clusters"]]
@@ -152,5 +148,5 @@ class ClusterPlaylist:
                                 inner='point', scale='width', ax=axes[num])
             if num == 0:
                 ax.set_title("Feature disribution across clusters", fontsize=16)
-        plt.savefig('Features-distribution-across-clusters.png')
-        plt.show()
+        plt.savefig(f'clustered{self.playlist_name}/images/Features-distribution-across-clusters.png')
+        # plt.show()
