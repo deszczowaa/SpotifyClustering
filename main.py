@@ -13,9 +13,6 @@ from create_report import PDF
 # and set as environmental variables
 
 if __name__ == "__main__":
-    os.environ['SPOTIPY_CLIENT_ID'] = "ac6fd439e91046509cb6297fffe57586"
-    os.environ['SPOTIPY_CLIENT_SECRET'] = "9882a9f65c7b42a79dfc6af5ed68ff5b"
-    os.environ['SPOTIPY_REDIRECT_URI'] = "http://127.0.0.1:8080/"
 
     username = input("Username: ")
     playlist_name = input("Which playlist would you like to cluster? Write name:  ")
