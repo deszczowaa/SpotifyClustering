@@ -29,6 +29,6 @@ Clusterization of playlist is performed based on features provided by Spotify. I
 In the main script the [first approach](https://github.com/deszczowaa/SpotifyClustering/blob/master/cluster_playlist.py) is used in order to form few playlist out of the original one.
 
 ### Generating PDF report
-The results of clusterization can be viewed in [PDF report](https://github.com/deszczowaa/SpotifyClustering/blob/master/Clustering-report.pdf) generated at the end of the procedure. Moreover, in the results folder the generated lists of songs can be found.
+The results of clusterization can be viewed in [PDF report](https://github.com/deszczowaa/SpotifyClustering/blob/master/Clustering-report.pdf) generated at the end of the procedure. Moreover, in the [results folder](https://github.com/deszczowaa/SpotifyClustering/tree/master/clusteredLevel22) the generated lists of songs can be found.
 
 A dockerized version made with Flask will be available on my github shortly.
